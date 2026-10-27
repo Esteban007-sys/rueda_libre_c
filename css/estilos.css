@@ -1,0 +1,208 @@
+:root {
+    --color-verde: #1E7A4F;
+    --color-azul: #14213D;
+    --color-crema: #FAF6EF;
+    --color-naranja: #F39A2B;
+    --color-gris: #5B6470;
+
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-textos: 'Open Sans', sans-serif;
+
+    --espacio-s: 0.5rem;
+    --espacio-m: 1rem;
+    --espacio-l: 2rem;
+}       
+
+body {
+    background-color: var(--color-crema);
+    color: var(--color-gris);
+    font-family: var(--fuente-textos);
+    margin: var(--espacio-l);
+    line-height: 1.6;
+}
+
+h1, h2, h3, dt {
+    color: var(--color-azul);
+    font-family: var(--fuente-titulos);
+}
+
+#header-principal {
+    background-color: #FAF6EF;
+    color: var(--color-azul);
+    padding: var(--espacio-l);
+    margin-bottom: var(--espacio-m);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-l);
+}
+
+.logo-principal {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-m);
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+} 
+
+nav a {
+    color: var(--color-azul);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--color-verde);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--espacio-l) 0;
+    background-color: #ffffff;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: var(--espacio-m);
+    color: var(--color-azul);
+}
+
+th, td {
+    border: 1px solid var(--color-gris);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-azul);
+    color: var(--color-crema);
+}
+
+fieldset {
+    border: 2px solid var(--color-azul);
+    padding: var(--espacio-m);
+    margin-bottom: var(--espacio-l);
+    background-color: #FAF6EF;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+    color: var(--color-azul);
+}
+
+button[type="submit"], input[type="submit"] {
+    background-color: var(--color-naranja);
+    color: var(--color-azul);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover, input[type="submit"]:hover {
+    background-color: var(--color-azul);
+    color: var(--color-crema);
+}
+
+strong {
+    color: var(--color-verde);
+}
+
+.recorridos-servicios {
+    display: flex;
+    flex-direction: row;         
+    justify-content: space-between; 
+    gap: var(--espacio-m);       
+    margin: var(--espacio-l) 0;  
+}
+
+.recorridos-servicios article {
+    background-color: #FAF6EF;
+    border: 2px solid var(--color-azul);
+    border-radius: 8px;
+    padding: var(--espacio-m);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--espacio-s);
+}
+/* Base: que nada se salga de la pantalla */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+/* Tablet y celular */
+@media (max-width: 768px) {
+    body {
+        margin: var(--espacio-m);
+    }
+
+    #header-principal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--espacio-m);
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .recorridos-servicios {
+        flex-direction: column;
+    }
+
+    /* La tabla hace scroll horizontal dentro de su espacio, sin romper la página */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 768px) {
+    body {
+        margin: var(--espacio-m);
+        text-align: center;
+    }
+
+    #header-principal {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: var(--espacio-m);
+    }
+
+    .logo-principal {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .recorridos-servicios {
+        flex-direction: column;
+        align-items: center;

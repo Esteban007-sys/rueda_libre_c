@@ -1,0 +1,43 @@
+:root {
+    --color-verde: #1E7A4F;
+    --color-azul: #14213D;
+    --color-crema: #FAF6EF;
+    --color-naranja: #F39A2B;
+    --color-gris: #5B6470;
+
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-textos: 'Open Sans', sans-serif;
+
+    --espacio-s: 0.5rem;
+    --espacio-m: 1rem;
+    --espacio-l: 2rem;
+}       
+.h1, h2, h3, dt {
+    color: var(--color-azul);
+    font-family: var(--fuente-titulos);
+}
+.p {
+    color: var(--color-gris);
+    font-family: var(--fuente-textos);
+}
+#header-principal{
+
+}
+#quienes-somos{
+
+}
+#nuestros-servicios{
+}
+.recorrido1, .recorrido2, .recorrido3 {
+    center;
+  border: 1px solid var(--color-gris);
+  border-radius: 12px;
+  padding: var(--espacio-m);
+  background-color: var(--color-crema);
+}
+#como-alquilar{
+}
+#encuentranos{
+}
+#pie-pagina{
+}

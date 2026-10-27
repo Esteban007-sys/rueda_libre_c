@@ -1,0 +1,39 @@
+} 1
+
+ URL completa:  http://127.0.0.1:5500/index.html
+ El protocolo: http://
+ El host: 127.0.0.1
+ El puerto: :5500
+ la ruta: /rueda-libre/index.html
+ el método de la petición: GET
+ el código de estado: 200
+
+} 2
+Escribe en la barra de direcciones una ruta que no exista (por ejemplo, /promociones.html) y registra el código que responde el servidor y qué significa:
+
+-El error geenrado es 404, ocurre cuando no se encuentra un archivo solicitado
+
+} 3
+
+*HTML: El HTML se usa para crear el esqueleto de la página
+*CSS: Le da la parte colorida a la págiona en general. Nos sirve para que no parezca un periódico en Times New Roman.
+*JavaScript: Sirve para conectar la parte interactiva creada con HTML y css, con las bases de datos y las funciones fundamentales de la página.
+
+} 4
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="paginas/nuestroservicios.html">Tarifas y rutas</a></li>
+<li><a href="paginas/reserva.html">Reservas</a></li>
+
+
+////semántica\\\\
+} 5
+- diagrama dibujado en papel
+- No utilizamos div / span. Por el momento solo usamos html puro
+
+} 6
+Pruevas del formulario:
+    - documento 929292929292: "el documento solo debe tener entre 6 y 12 dígitos"
+    - celular 312555555555: "El celular debe de comenzar por 3 y tener 10 dígitos"
+    - fecha: se probó con 21 de febrero de 2025 "seleccione un valor que no sea posterior al 1/11/2026"
+    - cantidad de vicilwetas en blanco: "intruduzca un número"
