@@ -1,75 +1,66 @@
 <!DOCTYPE html> 
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="icon" href="../img/favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rueda libre | Alquiler de Bicicletas</title>
+    <title>Rueda libre | Reservas</title>
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-        <header>
-          <h1>Reserva tu vicicleta</h1>
+    <header class="header-principal">
         <div class="logo-principal">
-        <img src="../img/logo.png" alt="Logo de Rueda Libre" width="100"> 
-        <p>Bienvenido a Rueda Libre, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="../#encuentranos">Encuéntranos</a>.</p>
+            <img src="../img/logo.png" alt="Logo de Rueda Libre" width="80"> 
+            <h1>Reserva tu bicicleta</h1>
         </div>
-        <nav>
-            <ul>
+        <nav class="menuinicial">
+            <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="nuestroservicios.html">Tarifas y rutas</a></li>
-                <li><a href="reserva.html">Reservas</a></li>
+                <li><a href="reserva.html" class="activo">Reservas</a></li>
             </ul>
         </nav>
     </header>
   
     <main>
-        <!-- SECCIÓN DE HORARIOS MANTENIENDO TU ESTRUCTURA -->
-        <aside>
-            <section id="horarios de atención">
-                <dl>
-                    <dt><strong>Horarios de atención</strong></dt>
-                    <!-- Se actualizaron los textos con las reglas comerciales del cliente para este reto -->
-                    <dd>Lunes a viernes: 7:00 a.m. - 7:00 p.m.</dd>
-                    <dd>Sábados, domingos y festivos: 6:00 a.m. - 2:00 p.m.</dd>
-                </dl>
-            </section>
-        </aside>
+        <section id="horarios-atencion">
+            <dl>
+                <dt><strong>Horarios de atención</strong></dt>
+                <dd>Lunes a viernes: 7:00 a.m. - 7:00 p.m.</dd>
+                <dd>Sábados, domingos y festivos: 6:00 a.m. - 2:00 p.m.</dd>
+            </dl>
+        </section>
 
-        <!-- SECCIÓN DE FORMULARIO SIGUIENDO TU IDENTIFICADOR Y PARRAFO -->
-        <section id="formulario de reserva">
-            <p><strong>Completa el formulario para reservar tu bicicleta:</strong></p>
+        <section id="formulario-reserva">
+            <h2>Completa el formulario para reservar tu bicicleta</h2>
             <form action="#" method="post">
                 
                 <!-- GRUPO 1: TUS DATOS -->
                 <fieldset>
                     <legend>Tus datos</legend>
-                    <br>
+                    
                     <label for="nombre">Nombre completo:</label>
                     <input type="text" id="nombre" name="nombre_completo" required minlength="3">
-                    <br><br>
                     
                     <label for="documento">Número de documento:</label>
                     <input type="text" id="documento" name="numero_documento" required pattern="[0-9]{6,10}" title="El documento debe contener solo números, entre 6 y 10 dígitos.">
-                    <br><br>
 
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
-                    <br><br>
 
                     <label for="celular">Celular:</label>
                     <input type="tel" id="celular" name="telefono_celular" required pattern="3[0-9]{9}" title="El celular debe tener 10 dígitos numéricos y comenzar con el número 3.">
-                    <br><br>
                 </fieldset>
-                <br>
 
                 <!-- GRUPO 2: TU ALQUILER -->
                 <fieldset>
                     <legend>Tu alquiler</legend>
-                    <br>
+                    
                     <label for="fecha">Fecha del alquiler:</label>
                     <input type="date" id="fecha" name="fecha_alquiler" required min="2026-11-01" max="2026-12-31">
-                    <br><br>
 
                     <label for="bicicleta">Bicicleta:</label>
                     <select id="bicicleta" name="bicicleta" required>
@@ -78,7 +69,6 @@
                         <option value="montaña">Montaña</option>
                         <option value="eléctrica">Eléctrica</option>
                     </select>
-                    <br><br>
 
                     <fieldset>
                         <legend>Plan (Selecciona una opción):</legend>
@@ -95,11 +85,9 @@
                             <label for="plan-completo">Día completo</label>
                         </p>
                     </fieldset>
-                    <br>
 
                     <label for="cantidad">Cantidad de bicicletas:</label>
                     <input type="number" id="cantidad" name="cantidad_bicicletas" required min="1" max="6">
-                    <br><br>
 
                     <label for="recorrido">Recorrido guiado:</label>
                     <select id="recorrido" name="recorrido_guiado">
@@ -108,32 +96,30 @@
                         <option value="sabores_barrio">Sabores de Barrio</option>
                         <option value="reto_palmas">Reto Las Palmas</option>
                     </select>
-                    <br><br>
 
-                    <label for="comentarios">Comentarios:</label><br>
+                    <label for="comentarios">Comentarios:</label>
                     <textarea id="comentarios" name="comentarios" rows="4" cols="40" maxlength="300"></textarea>
-                    <br><br>
                 </fieldset>
-                <br>
 
                 <!-- GRUPO 3: CONFIRMACIÓN -->
                 <fieldset>
                     <legend>Confirmación</legend>
-                    <br>
-                    <input type="checkbox" id="politicas" name="politicas_alquiler" value="aceptado" required>
-                    <label for="politicas">Acepto las políticas de alquiler del establecimiento.</label>
-                    <br><br>
+                    <p>
+                        <input type="checkbox" id="politicas" name="politicas_alquiler" value="aceptado" required>
+                        <label for="politicas">Acepto las políticas de alquiler del establecimiento.</label>
+                    </p>
                 </fieldset>
-                <br>
 
-                <input type="submit" value="Reservar">
+                <div>
+                    <input type="submit" value="Reservar" class="btn-cta">
+                </div>
             </form>
         </section>
     </main>
 
-    <footer><!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina">
         <p><strong>Rueda Libre</strong></p>
-        <p><a href="https://wa.me" target="_blank">Escríbenos por WhatsApp aquí para reservar</a></p>
+        <p><a href="https://wa.me" target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp aquí para reservar</a></p>
         <p>Recuerda que también contamos con un correo para sugerencias: <a href="mailto:rueda@ruedalibre.com">rueda@ruedalibre.com</a></p>
         <p><a href="../index.html">Regresar al menú anterior</a></p>
         <p>&copy; 2024 Rueda Libre. Todos los derechos reservados.</p>

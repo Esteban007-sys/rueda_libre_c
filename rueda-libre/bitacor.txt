@@ -37,3 +37,39 @@ Pruevas del formulario:
     - celular 312555555555: "El celular debe de comenzar por 3 y tener 10 dígitos"
     - fecha: se probó con 21 de febrero de 2025 "seleccione un valor que no sea posterior al 1/11/2026"
     - cantidad de vicilwetas en blanco: "intruduzca un número"
+
+
+} 7 - Comprobación de herencia (MiniReto 9)
+En DevTools (Styles y Computed):
+- Propiedad que se hereda:
+  * font-family (y color): El elemento <p> hereda la fuente 'Open Sans', sans-serif y el color var(--color-gris) directamente desde el <body> por cascada/herencia tipográfica natural sin tener que redefinirlo en el selector p.
+- Propiedad que NO se hereda:
+  * margin (y padding / background-color): Las propiedades del modelo de caja (box model) como margin, padding, border o background-color no son heredables; cada párrafo conserva sus propios márgenes calculados por el navegador o definidos explícitamente en el CSS.
+
+} 8 - Conflicto de cascada y especificidad en la navegación (MiniReto 10)
+1. Reglas en conflicto del compañero:
+   #menu a { color: var(--gris-asfalto); }
+   .activo { color: var(--verde-ruta); font-weight: 600; }
+
+2. Cálculo de especificidad:
+   - #menu a:
+     * [0] Estilos en línea: 0
+     * [a] IDs (#menu): 1
+     * [b] Clases, atributos, pseudoclases: 0
+     * [c] Elementos (a): 1
+     * Puntuación de especificidad: (0, 1, 0, 1) ó 101
+
+   - .activo:
+     * [0] Estilos en línea: 0
+     * [a] IDs: 0
+     * [b] Clases (.activo): 1
+     * [c] Elementos: 0
+     * Puntuación de especificidad: (0, 0, 1, 0) ó 010
+
+3. Causa del problema:
+   El selector '#menu a' contiene un ID (#menu), lo cual le otorga una especificidad de (0, 1, 0, 1). Por las reglas de la cascada CSS, cualquier selector con un ID tiene mayor peso que un selector simple de clase (0, 0, 1, 0), sin importar el orden en que estén escritos en el archivo. Por lo tanto, el color de '#menu a' anula la declaración de '.activo' y DevTools la muestra tachada.
+
+4. Solución aplicada sin !important ni estilos en línea:
+   Se aumentó la especificidad del selector del enlace activo combinándolo con el elemento dentro del menú:
+   '#menu a.activo' (especificidad: 0, 1, 1, 1 ó 111).
+   Al tener un ID, una clase y un elemento, supera a '#menu a' (0, 1, 0, 1) y permite que el enlace de la página activa se pinte en verde (--verde-ruta) con font-weight: 600 correctamente.
