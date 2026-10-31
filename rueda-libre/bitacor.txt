@@ -73,3 +73,41 @@ En DevTools (Styles y Computed):
    Se aumentó la especificidad del selector del enlace activo combinándolo con el elemento dentro del menú:
    '#menu a.activo' (especificidad: 0, 1, 1, 1 ó 111).
    Al tener un ID, una clase y un elemento, supera a '#menu a' (0, 1, 0, 1) y permite que el enlace de la página activa se pinte en verde (--verde-ruta) con font-weight: 600 correctamente.
+
+
+} 9 - Medición del Box Model en Tarjeta de Servicios (MiniReto 11)
+Medición en DevTools (Computed) del ancho de una tarjeta de servicio con width base (250px), padding horizontal de 1rem (16px a cada lado) y borde de 2px a cada lado:
+
+1. Antes (box-sizing: content-box - comportamiento por defecto):
+   - Contenido (Content): 250px
+   - Relleno (Padding): 16px + 16px = 32px
+   - Borde (Border): 2px + 2px = 4px
+   - Ancho Total en Computed: 250px + 32px + 4px = 286px.
+   - Observación: El ancho declarado no incluía ni el relleno ni el borde, provocando que las tarjetas fueran más anchas de lo asignado y se apretaran o desbordaran en el contenedor.
+
+2. Después (box-sizing: border-box - regla global aplicada):
+   - Ancho Total asignado: 250px
+   - Borde (Border): 4px (incluido dentro del ancho)
+   - Relleno (Padding): 32px (incluido dentro del ancho)
+   - Contenido real (Content): 250px - 32px - 4px = 214px
+   - Ancho Total en Computed: Exactamente 250px.
+   - Observación: Las tarjetas mantienen su tamaño exacto independientemente del relleno y del borde, logrando una separación simétrica y una cuadrícula fluida sin desbordamientos.
+
+} 10 - Resumen semanal y consolidación v1.0 (MiniReto 12)
+Resumen de lo construido durante la semana:
+- MiniReto 1: Inspección de protocolos, URLs, puertos, métodos GET y códigos de respuesta HTTP (200 OK) usando Live Server.
+- MiniReto 2: Diagnóstico y comprensión de errores 404 (rutas inexistentes).
+- MiniReto 3: Definición del rol de cada tecnología web: HTML (estructura), CSS (presentación y estilo), JS (interactividad y lógica).
+- MiniReto 4: Construcción de navegación fluida entre páginas con rutas relativas organizadas en carpetas.
+- MiniReto 5: Estructuración semántica en HTML5 (header, nav, main, section, article, footer) evitando divs innecesarios.
+- MiniReto 6: Formulario completo de reservas con tipos de input especializados, restricciones (min, max, pattern) y validación nativa.
+- MiniReto 7 (MR 9): Hoja de estilos externa (styles.css), tipografías Google Fonts (Montserrat 700 y Open Sans 400/600), paleta de colores de marca y comprobación de herencia.
+- MiniReto 8 (MR 10): Resolución de conflictos de cascada y especificidad (#menu a vs #menu a.activo), pseudo-clases :hover y :focus con contraste 4.5:1 para accesibilidad total.
+- MiniReto 9 (MR 11): Control del espaciado con box-sizing: border-box, escala de espaciado en rem, solo bordes en px, tarjetas con imágenes al 100% y tablas legibles.
+- MiniReto 10 (MR 12): Posicionamiento sticky en cabecera, posicionamiento relative/absolute para la etiqueta "Nuevo" en la tarjeta de bicicletas eléctricas, botón flotante fixed de WhatsApp accesible en todas las páginas y consolidación limpia del código sin redundancias.
+
+¿Qué mejoraría a futuro?
+1. Menú responsivo hamburguesa: Añadir funcionalidad desplegable para pantallas móviles de menos de 480px.
+2. Modo oscuro (Dark Mode): Crear un set alternativo de variables en :root con media query (prefers-color-scheme: dark).
+3. Formatos de imagen modernos: Migrar imágenes png/jpg a formato WebP o AVIF para acelerar el tiempo de carga.
+4. Integración funcional del formulario: Conectar el envío del formulario con un servicio backend o webhook de notificaciones para procesar reservas reales.

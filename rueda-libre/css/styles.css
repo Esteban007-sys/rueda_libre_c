@@ -1,22 +1,26 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES (PALETA DE MARCA, TIPOGRAFÍAS Y ESPACIADO)
+   ========================================================================== */
 :root {
-    /* Paleta de colores de marca */
+    /* Paleta de colores aprobada de la marca */
     --color-verde: #1E7A4F;
     --verde-ruta: #1E7A4F;
     --color-azul: #14213D;
     --azul-noche: #14213D;
     --color-crema: #FAF6EF;
     --crema-fondo: #FAF6EF;
+    --color-fondo: #EFE5D8; /* Tono cálido natural acorde a la madera y ladrillo de la portada */
     --color-naranja: #F39A2B;
     --naranja-impulso: #F39A2B;
     --color-gris: #5B6470;
     --gris-asfalto: #5B6470;
     --blanco: #FFFFFF;
 
-    /* Familias tipográficas con fuentes de respaldo */
+    /* Familias tipográficas de Google Fonts con respaldo */
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-textos: 'Open Sans', sans-serif;
 
-    /* Escala de espaciado en unidades relativas rem */
+    /* Escala de espaciado en unidades relativas (rem) */
     --espacio-xs: 0.25rem;
     --espacio-s: 0.5rem;
     --espacio-m: 1rem;
@@ -25,23 +29,26 @@
 }
 
 /* ==========================================================================
-   Base: Box Model y Reseteo Global
+   2. RESETEO GLOBAL Y MODELO DE CAJA (BOX-SIZING)
    ========================================================================== */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   3. ESTILOS BASE Y HERENCIA TIPOGRÁFICA
+   ========================================================================== */
 body {
-    max-width: 1100px;
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 0 var(--espacio-m);
-    background-color: var(--color-crema);
+    padding: 0 var(--espacio-m) 5rem var(--espacio-m);
+    background-color: var(--color-fondo);
     color: var(--color-gris);
     font-family: var(--fuente-textos);
     line-height: 1.6;
 }
 
-/* Encabezados agrupados por selector único con fuente de títulos y color de marca */
+/* Selector agrupado para todos los encabezados con tipografía y color de marca */
 h1, h2, h3, h4, h5, h6, dt {
     font-family: var(--fuente-titulos);
     color: var(--color-azul);
@@ -65,12 +72,16 @@ strong {
     color: var(--color-verde);
 }
 
+section {
+    margin-bottom: var(--espacio-xl);
+}
+
 /* ==========================================================================
-   Header y Navegación (Posicionamiento y Accesibilidad)
+   4. ENCABEZADO Y NAVEGACIÓN (FONDO AZUL, H1 BLANCO Y ENLACES EN NARANJA)
    ========================================================================== */
 .header-principal, header {
-    background-color: var(--blanco);
-    border-bottom: 2px solid var(--color-azul);
+    background-color: var(--color-azul);
+    border-bottom: 2px solid var(--color-naranja);
     padding: var(--espacio-m) var(--espacio-l);
     margin-bottom: var(--espacio-l);
     display: flex;
@@ -78,7 +89,7 @@ strong {
     align-items: center;
     justify-content: space-between;
     gap: var(--espacio-m);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -90,57 +101,67 @@ strong {
     gap: var(--espacio-m);
 }
 
-.logo-principal h1 {
+/* Encabezado h1 en color blanco dentro de la cabecera */
+.header-principal h1,
+.logo-principal h1,
+header h1 {
+    color: var(--blanco);
     margin: 0;
     font-size: 1.75rem;
 }
 
+/* Menú en fila con display adecuado */
 .menuinicial ul, #menu {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: var(--espacio-m);
     list-style: none;
     padding: 0;
     margin: 0;
-    align-items: center;
 }
 
-/* Reglas de navegación del compañero (MiniReto 10) */
+#menu li {
+    display: inline-block;
+}
+
+/* Enlaces del menú inicial en naranja */
 #menu a {
-    color: var(--gris-asfalto);
+    color: var(--color-naranja);
     text-decoration: none;
     font-weight: 600;
     padding: var(--espacio-s) var(--espacio-m);
-    border-radius: 4px;
+    border-radius: 0.25rem;
     transition: color 0.2s ease, border-bottom 0.2s ease;
 }
 
 .activo {
-    color: var(--verde-ruta);
-    font-weight: 600;
+    color: var(--blanco);
+    font-weight: 700;
 }
 
 /* Solución del conflicto de especificidad:
-   #menu a tiene especificidad (0,1,0,1) que anulaba .activo (0,0,1,0).
-   Con #menu a.activo elevamos la especificidad a (0,1,1,1) sin !important */
+   #menu a (0,1,0,1) anulaba .activo (0,0,1,0).
+   Con #menu a.activo elevamos a (0,1,1,1) sin usar !important */
 #menu a.activo,
 #menu .activo {
-    color: var(--verde-ruta);
-    font-weight: 600;
-    border-bottom: 3px solid var(--verde-ruta);
+    color: var(--blanco);
+    font-weight: 700;
+    border-bottom: 3px solid var(--color-naranja);
 }
 
 #menu a:hover {
-    color: var(--verde-ruta);
+    color: var(--blanco);
 }
 
 #menu a:focus {
-    outline: 2px solid var(--naranja-impulso);
+    outline: 2px solid var(--blanco);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 0.25rem;
 }
 
 /* ==========================================================================
-   Enlaces Generales y Botones de Llamada a la Acción (CTA)
+   5. ENLACES GENERALES Y BOTONES DE LLAMADA A LA ACCIÓN (CTA)
    ========================================================================== */
 a {
     color: var(--color-verde);
@@ -166,7 +187,7 @@ a:focus {
     padding: var(--espacio-s) var(--espacio-m);
     text-decoration: none;
     border: 2px solid var(--naranja-impulso);
-    border-radius: 6px;
+    border-radius: 0.375rem;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -184,12 +205,19 @@ a:focus {
 }
 
 /* ==========================================================================
-   Tarjetas de Servicios y Contenido (Box Model & Espaciado)
+   6. PORTADA DE INICIO (ALTURA EN VH)
    ========================================================================== */
-section {
-    margin-bottom: var(--espacio-xl);
+.imagen-portada {
+    width: 100%;
+    min-height: 40vh;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin: var(--espacio-m) 0;
 }
 
+/* ==========================================================================
+   7. TARJETAS DE SERVICIOS (BOX MODEL, IMAGEN AL 100% Y ETIQUETA POSICIONADA)
+   ========================================================================== */
 .recorridos-servicios {
     display: flex;
     flex-direction: row;
@@ -198,33 +226,57 @@ section {
     margin: var(--espacio-l) 0;
 }
 
-.recorridos-servicios article {
-    background-color: var(--blanco);
+.recorridos-servicios article, .tarjeta-servicio {
+    position: relative;
+    background-color: var(--color-fondo);
     border: 2px solid var(--color-azul);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding: var(--espacio-l) var(--espacio-m);
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: var(--espacio-s);
+    gap: var(--espacio-m);
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.recorridos-servicios article:hover {
-    transform: translateY(-4px);
+.recorridos-servicios article:hover, .tarjeta-servicio:hover {
+    transform: translateY(-0.25rem);
     border-color: var(--naranja-impulso);
+}
+
+/* La imagen ocupa todo el ancho de la tarjeta en porcentaje */
+.recorridos-servicios article img, .tarjeta-servicio img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+/* Etiqueta "Nuevo" posicionada en esquina superior sin desplazar contenido */
+.etiqueta-nuevo {
+    position: absolute;
+    top: var(--espacio-s);
+    right: var(--espacio-s);
+    background-color: var(--color-verde);
+    color: var(--color-crema);
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: var(--espacio-xs) var(--espacio-s);
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
 }
 
 .contenedor-mapa {
     margin: var(--espacio-m) 0;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     overflow: hidden;
 }
 
 /* ==========================================================================
-   Tablas de Tarifas y Recorridos (Lectura Clara)
+   8. TABLAS DE TARIFAS Y RECORRIDOS (ESPACIADO EN REM Y BORDES EN PX)
    ========================================================================== */
 table {
     width: 100%;
@@ -232,7 +284,7 @@ table {
     margin: var(--espacio-l) 0;
     background-color: var(--blanco);
     border: 1px solid var(--color-gris);
-    border-radius: 6px;
+    border-radius: 0.5rem;
     overflow: hidden;
 }
 
@@ -255,6 +307,7 @@ thead th {
     background-color: var(--color-azul);
     color: var(--color-crema);
     font-family: var(--fuente-titulos);
+    font-weight: 700;
 }
 
 tbody th {
@@ -268,11 +321,11 @@ tbody tr:nth-child(even) {
 }
 
 /* ==========================================================================
-   Formularios y Campos (Espaciado y Estados de Foco Visibles)
+   9. FORMULARIOS (CAMPOS AL 100%, ETIQUETA SOBRE CAMPO Y FOCO ACCESIBLE)
    ========================================================================== */
 fieldset {
     border: 2px solid var(--color-azul);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding: var(--espacio-l);
     margin-bottom: var(--espacio-l);
     background-color: var(--blanco);
@@ -287,10 +340,10 @@ legend {
 }
 
 label {
-    display: inline-block;
+    display: block;
     font-weight: 600;
     color: var(--color-azul);
-    margin-top: var(--espacio-s);
+    margin-top: var(--espacio-m);
     margin-bottom: var(--espacio-xs);
 }
 
@@ -301,15 +354,16 @@ input[type="date"],
 input[type="number"],
 select,
 textarea {
+    display: block;
     width: 100%;
     padding: var(--espacio-s);
     border: 1px solid var(--color-gris);
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-family: var(--fuente-textos);
     font-size: 1rem;
     color: var(--color-azul);
     background-color: var(--blanco);
-    margin-bottom: var(--espacio-m);
+    margin-bottom: var(--espacio-s);
 }
 
 input:focus,
@@ -321,12 +375,14 @@ textarea:focus {
     background-color: var(--blanco);
 }
 
+/* Botón de formulario con relleno generoso */
 input[type="submit"], button[type="submit"] {
+    display: inline-block;
     background-color: var(--naranja-impulso);
     color: var(--azul-noche);
     border: 2px solid var(--naranja-impulso);
-    border-radius: 6px;
-    padding: var(--espacio-s) var(--espacio-l);
+    border-radius: 0.375rem;
+    padding: var(--espacio-m) var(--espacio-l);
     font-family: var(--fuente-titulos);
     font-size: 1rem;
     font-weight: 700;
@@ -346,7 +402,39 @@ input[type="submit"]:focus, button[type="submit"]:focus {
 }
 
 /* ==========================================================================
-   Pie de Página
+   10. BOTÓN FLOTANTE DE WHATSAPP (POSICIONAMIENTO FIJO)
+   ========================================================================== */
+.boton-whatsapp {
+    position: fixed;
+    bottom: var(--espacio-l);
+    right: var(--espacio-l);
+    background-color: var(--color-verde);
+    color: var(--color-crema);
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: var(--espacio-s) var(--espacio-m);
+    border-radius: 2rem;
+    text-decoration: none;
+    border: 2px solid var(--color-crema);
+    z-index: 1000;
+    display: inline-block;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-whatsapp:hover {
+    background-color: var(--color-azul);
+    color: var(--color-crema);
+    transform: scale(1.05);
+}
+
+.boton-whatsapp:focus {
+    outline: 3px solid var(--color-naranja);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   11. PIE DE PÁGINA
    ========================================================================== */
 footer, #pie-pagina {
     margin-top: var(--espacio-xl);
@@ -356,11 +444,11 @@ footer, #pie-pagina {
 }
 
 /* ==========================================================================
-   Diseño Responsivo (Media Queries)
+   12. DISEÑO RESPONSIVO (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 768px) {
     body {
-        padding: 0 var(--espacio-s);
+        padding: 0 var(--espacio-s) 6rem var(--espacio-s);
     }
 
     .header-principal, header {
@@ -390,5 +478,10 @@ footer, #pie-pagina {
     table {
         display: block;
         overflow-x: auto;
+    }
+
+    .boton-whatsapp {
+        bottom: var(--espacio-m);
+        right: var(--espacio-m);
     }
 }
